@@ -6699,7 +6699,7 @@ var require_lib3 = __commonJS({
 var fetch = require_lib3();
 var GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 var DISTANCE_API_URL = "https://maps.googleapis.com/maps/api/distancematrix/json";
-var BASE_CEP = "31980540";
+var BASE_CEP = "29171238";
 var sanitizeCep = (value = "") => value.toString().replace(/\D/g, "");
 exports.handler = async (event) => {
   if (!GOOGLE_API_KEY) {
@@ -6779,10 +6779,11 @@ function mapElementStatusToMessage(status) {
 }
 function calculatePrice(distanceKm, vehicleType) {
   const rules = {
-    carro: { base: 150, extra: 3.5 },
-    moto: { base: 150, extra: 3.5 },
-    utilitario: { base: 190, extra: 3.9 },
-    semipesado: { base: 250, extra: 4.5 }
+    carro: { base: 150, extra: 3 },
+    moto: { base: 150, extra: 3 },
+    utilitario: { base: 200, extra: 3.5 },
+    pesado: { base: 500, extra: 5 },
+    extrap: { base: 600, extra: 6 }
   };
   const { base, extra } = rules[vehicleType] || rules.carro;
   if (distanceKm <= 40) {

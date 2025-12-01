@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const DISTANCE_API_URL =
   "https://maps.googleapis.com/maps/api/distancematrix/json";
-const BASE_CEP = "31980540";
+const BASE_CEP = "29171238";
 
 const sanitizeCep = (value = "") => value.toString().replace(/\D/g, "");
 
@@ -99,10 +99,11 @@ function mapElementStatusToMessage(status) {
 
 function calculatePrice(distanceKm, vehicleType) {
   const rules = {
-    carro: { base: 150, extra: 3.5 },
-    moto: { base: 150, extra: 3.5 },
-    utilitario: { base: 190, extra: 3.9 },
-    semipesado: { base: 250, extra: 4.5 },
+    carro: { base: 150, extra: 3 },
+    moto: { base: 150, extra: 3 },
+    utilitario: { base: 200, extra: 3.5 },
+    pesado: { base: 500, extra: 5 },
+    extrap: { base: 600, extra: 6 },
   };
 
   const { base, extra } = rules[vehicleType] || rules.carro;
@@ -123,3 +124,4 @@ function respond(statusCode, body) {
     body: JSON.stringify(body),
   };
 }
+

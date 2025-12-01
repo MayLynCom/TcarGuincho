@@ -100,7 +100,7 @@ if (callButton) {
   callButton.addEventListener("click", () => {
     if (!lastResultData) return;
     const message = buildWhatsappMessage(lastResultData);
-    const url = `https://wa.me/5531990831992?text=${encodeURIComponent(
+    const url = `https://wa.me/5527997372791?text=${encodeURIComponent(
       message
     )}`;
     window.open(url, "_blank");
@@ -111,8 +111,9 @@ function buildWhatsappMessage(data) {
   const vehicleNames = {
     moto: "Moto",
     carro: "Carro de passeio",
-    utilitario: "Pick-up leve / furgão",
-    semipesado: "Veículo grande / comercial",
+    utilitario: "Pick-up leve / furgao",
+    pesado: "Veiculo grande / comercial",
+    extrap: "Extra pesado (carretas e maquinario)",
   };
 
   const formatCep = (value) =>
@@ -133,3 +134,4 @@ function buildWhatsappMessage(data) {
     `Preço estimado: ${priceFormatted}`
   );
 }
+

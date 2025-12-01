@@ -24,9 +24,8 @@ header {
 }
 
 .logo {
-    width: 220px;
+    width: 250px;
     border-radius: 12px;
-    box-shadow: 0 0 24px #222;
     animation: fadeInDown 1s;
 }
 
@@ -115,7 +114,7 @@ section, .hero, .cards, .steps, .buttons {
 .hero-text h1 {
     font-size: 2.6rem;
     font-weight: 700;
-    color: #C22433;
+    color: #FFD700;
     margin: 0 0 12px 0;
     line-height: 1.1;
     text-shadow: 0 2px 16px #000a;
@@ -162,7 +161,7 @@ section, .hero, .cards, .steps, .buttons {
 
 .btn-yellow:hover {
     transform: scale(1.06);
-    box-shadow: 0 0 24px #C22433;
+    box-shadow: 0 0 24px #FFD700;
 }
 
 .btn-red {
@@ -183,7 +182,7 @@ section {
 .pontos-importantes h2,
 .passos h2,
 .socorro h2 {
-    color: #C22433;
+    color: #FFD700;
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 8px;
@@ -222,15 +221,15 @@ section {
 
 .card:hover {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 0 32px #C22433, 0 0 0 4px #C2243388;
+    box-shadow: 0 0 32px #FFD700, 0 0 0 4px #FFD70088;
 }
 
 .icon {
     font-size: 2.4rem;
     display: block;
     margin-bottom: 12px;
-    color: #C22433;
-    filter: drop-shadow(0 0 8px #C2243388);
+    color: #FFD700;
+    filter: drop-shadow(0 0 8px #FFD70088);
 }
 
 img{
@@ -239,7 +238,7 @@ img{
 }
 
 .card h3 {
-    color: #C22433;
+    color: #FFD700;
     font-size: 1.2rem;
     margin-bottom: 10px;
     font-weight: 700;
@@ -256,7 +255,7 @@ img{
 }
 
 .pontos-importantes h2 span {
-    color: #C22433;
+    color: #FFD700;
     font-size: 2rem;
     font-weight: 700;
 }
@@ -295,8 +294,8 @@ img{
     margin: 0 auto 8px auto; /* centraliza verticalmente e horizontalmente */
     width: 10%;
     font-size: 3.5rem;
-    color: #C22433;
-    filter: drop-shadow(0 0 12px #C2243388);
+    color: #FFD700;
+    filter: drop-shadow(0 0 12px #FFD70088);
     animation: flash 1.2s infinite alternate;
 }
 
@@ -311,7 +310,7 @@ footer {
     width: 120px;
     border-radius: 12px;
     margin-bottom: 12px;
-    box-shadow: 0 0 12px #C22433;
+    box-shadow: 0 0 12px #FFD700;
 }
 
 footer p {
@@ -362,8 +361,8 @@ footer p {
     to { opacity: 1; transform: translateY(0);}
 }
 @keyframes flash {
-    from { filter: drop-shadow(0 0 12px #C2243388);}
-    to { filter: drop-shadow(0 0 32px #C2243388);}
+    from { filter: drop-shadow(0 0 12px #FFD70088);}
+    to { filter: drop-shadow(0 0 32px #FFD70088);}
 }
 
 /* Responsivo */
@@ -447,7 +446,7 @@ footer p {
 }
 
 .secao-cep__header h2 {
-    color: #C22433;
+    color: #FFD700;
     font-size: 2.2rem;
     margin-bottom: 8px;
 }
