@@ -33,7 +33,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <a href="#simulacao-cep" class="btn btn-yellow">Calcular orçamento</a>
                 </div>
             </div>
-            <img src="guincho.jpg" alt="Guincho" class="hero-img">
+            <div class="hero-carousel">
+                <div class="carousel">
+                    <div class="carousel-window">
+                        <div class="carousel-track" id="hero-carousel-track">
+                            <img src="guincho.jpg" alt="Guincho" class="hero-img">
+                        </div>
+                    </div>
+                    <div class="carousel-dots" id="hero-carousel-dots" aria-label="Selecao de imagem"></div>
+                </div>
+            </div>
         </section>
 
         <section class="como-ajudar">
@@ -194,6 +203,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <img src="logo.png" alt="Logo Guincho" class="logo-footer">
         <p>Copyright © 2025 - Todos os direitos reservados. CNPJ: 53.742.329/0001-94</p>
     </footer>
+    <script>
+        (function () {
+            const images = [
+                'guincho.jpg',
+                'Tcar (2).jpg',
+                'Tcar (3).jpg',
+                'Tcar (7).jpg',
+                'Tcar (9).jpg',
+                'Tcar (12).jpg'
+            ];
+            const track = document.getElementById('hero-carousel-track');
+            const dotsContainer = document.getElementById('hero-carousel-dots');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            if (!track || !dotsContainer) return;
+
+            track.innerHTML = '';
+            images.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = 'Guincho ' + (index + 1);
+                img.className = 'hero-img';
+                img.setAttribute('data-index', index);
+                track.appendChild(img);
+
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+                dot.setAttribute('data-index', index);
+                dot.type = 'button';
+                dot.setAttribute('aria-label', 'Ir para imagem ' + (index + 1));
+                dotsContainer.appendChild(dot);
+            });
+
+            let currentIndex = 0;
+            const total = images.length;
+            const dots = Array.from(dotsContainer.children);
+
+            function update() {
+                const offset = -currentIndex * 100;
+                track.style.transform = 'translateX(' + offset + '%)';
+                dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentIndex));
+            }
+
+            function goTo(index) {
+                currentIndex = (index + total) % total;
+                update();
+            }
+
+            prevBtn?.addEventListener('click', () => goTo(currentIndex - 1));
+            nextBtn?.addEventListener('click', () => goTo(currentIndex + 1));
+            dots.forEach((dot, idx) => dot.addEventListener('click', () => goTo(idx)));
+
+            let autoplay = setInterval(() => goTo(currentIndex + 1), 4500);
+            function resetAutoplay() {
+                clearInterval(autoplay);
+                autoplay = setInterval(() => goTo(currentIndex + 1), 4500);
+            }
+            [prevBtn, nextBtn, ...dots].forEach((el) => el?.addEventListener('click', resetAutoplay));
+
+            update();
+        })();
+    </script>
     <script src="cep-calculator.js"></script>
 </body>
 
