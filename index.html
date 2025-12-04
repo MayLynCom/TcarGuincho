@@ -140,19 +140,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section class="secao-cep" id="simulacao-cep">
             <div class="secao-cep__header">
                 <h2>Simule o resgate completo</h2>
-                <p>
-                    Informe os CEPs e o tipo de veículo para estimar a quilometragem total (base ➜ veículo ➜ destino ➜ base) e o valor do serviço.
+                                <p>
+                    Informe os enderecos e o tipo de veiculo para estimar a quilometragem total (base -> veiculo -> destino -> base) e o valor do servico.
                 </p>
             </div>
             <form id="cep-form" class="cep-form">
                 <div class="form-row">
                     <label>
-                        CEP do veículo
-                        <input type="text" id="cep-veiculo" placeholder="Ex: 32315000" maxlength="9" required />
+                        Endereço do veiculo
+                        <input type="text" id="endereco-veiculo" placeholder="Ex: Av. Brasil, 100 - Centro, Serra/ES" required />
+                        <span class="input-hint">Rua/Av + Numero + bairro</span>
                     </label>
                     <label>
-                        CEP do destino
-                        <input type="text" id="cep-destino" placeholder="Ex: 30180001" maxlength="9" required />
+                        Endereço do destino
+                        <input type="text" id="endereco-destino" placeholder="Ex: Rua das Palmeiras, 250 - Vitoria/ES" required />
+                        <span class="input-hint">Rua/Av + Numero + bairro</span>
                     </label>
                 </div>
                 <div class="tipos-veiculo">
