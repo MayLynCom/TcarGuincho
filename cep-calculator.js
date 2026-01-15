@@ -7,6 +7,7 @@ const callButton = document.getElementById("btn-chamado");
 const normalizeAddress = (value = "") => value.replace(/\s+/g, " ").trim();
 let lastResultData = null;
 updateCallButtonState();
+const dataLayer = window.dataLayer || [];
 
 if (cepForm) {
   cepForm.addEventListener("submit", async (event) => {
@@ -101,7 +102,18 @@ if (callButton) {
     if (!lastResultData) return;
     const message = buildWhatsappMessage(lastResultData);
     const url = `https://wa.me/5527997372791?text=${encodeURIComponent(message)}`;
+    pushConversionEvent(lastResultData);
     window.open(url, "_blank");
+  });
+}
+
+function pushConversionEvent(data) {
+  dataLayer.push({
+    event: "whatsapp_lead",
+    value: data.price,
+    currency: "BRL",
+    distance_km: Number(data.distanceKm.toFixed(2)),
+    vehicle_type: data.vehicleType,
   });
 }
 
