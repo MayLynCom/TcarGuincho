@@ -7,7 +7,6 @@ const callButton = document.getElementById("btn-chamado");
 const normalizeAddress = (value = "") => value.replace(/\s+/g, " ").trim();
 let lastResultData = null;
 updateCallButtonState();
-const dataLayer = window.dataLayer || [];
 
 if (cepForm) {
   cepForm.addEventListener("submit", async (event) => {
@@ -58,6 +57,7 @@ if (cepForm) {
         currency: "BRL",
         minimumFractionDigits: 2,
       });
+      setConversionValue(lastResultData);
       showResult();
       updateCallButtonState();
     } catch (error) {
@@ -102,18 +102,16 @@ if (callButton) {
     if (!lastResultData) return;
     const message = buildWhatsappMessage(lastResultData);
     const url = `https://wa.me/5527997372791?text=${encodeURIComponent(message)}`;
-    pushConversionEvent(lastResultData);
     window.open(url, "_blank");
   });
 }
 
-function pushConversionEvent(data) {
-  dataLayer.push({
-    event: "whatsapp_lead",
-    value: data.price,
+function setConversionValue(data) {
+  if (typeof window === "undefined") return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    value: Number(data.price.toFixed(2)),
     currency: "BRL",
-    distance_km: Number(data.distanceKm.toFixed(2)),
-    vehicle_type: data.vehicleType,
   });
 }
 
